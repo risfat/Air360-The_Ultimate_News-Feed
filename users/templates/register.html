@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    {% load static %}
+    <link href="{% static 'users/css/style.css' %}" rel="stylesheet">
+     <script src="{% static 'users/js/script.js' %}"></script>
+    <link rel="icon" type="image/png" href="{% static 'images/ico.png' %}"/>
+
+
+    <title>Air360 Register</title>
+</head>
+<body>
+
+
+
+<section>
+
+  <div class="box">
+
+    <div class="square" style="--i:0;"></div>
+    <div class="square" style="--i:1;"></div>
+    <div class="square" style="--i:2;"></div>
+    <div class="square" style="--i:3;"></div>
+    <div class="square" style="--i:4;"></div>
+    <div class="square" style="--i:5;"></div>
+
+   <div class="container">
+    <div class="form">
+      <h2>REGISTER to Air360</h2>
+      <form action="" method="POST">
+          {% csrf_token %}
+        <div class="inputBx">
+{#          <input type="text" required="required">#}
+            {{ form.username }}
+          <span>User Name</span>
+          <img src="https://www.flaticon.com/svg/static/icons/svg/709/709699.svg" alt="user">
+        </div>
+
+          <div class="inputBx">
+{#          <input type="email" required="required">#}
+              {{ form.email }}
+{#          <span>Email</span>#}
+          <img src="https://www.flaticon.com/svg/static/icons/svg/709/709699.svg" alt="email">
+        </div>
+
+        <div class="inputBx password">
+{#          <input id="password-input" type="password" name="password" required="required">#}
+            {{ form.password1 }}
+          <span>Password</span>
+          <a href="#" class="password-control" onclick="return show_hide_password(this);"></a>
+          <img src="https://www.flaticon.com/svg/static/icons/svg/1828/1828471.svg" alt="lock">
+        </div>
+
+           <div class="inputBx password">
+{#          <input id="password-input" type="password" name="password" required="required">#}
+               {{ form.password2 }}
+          <span>Password</span>
+          <a href="#" class="password-control" onclick="return show_hide_password(this);"></a>
+          <img src="https://www.flaticon.com/svg/static/icons/svg/1828/1828471.svg" alt="lock">
+        </div>
+
+
+          {{ form.errors }}
+
+        <div class="inputBx">
+          <input type="submit" value="Sign Up" >
+        </div>
+      </form>
+
+      <p>Already have an account <a href="{% url 'login' %}">Sign In</a></p>
+    </div>
+  </div>
+
+  </div>
+</section>
+
+{##}
+{#<script>#}
+{#		//Query All input fields#}
+{#        const form_fields = document.getElementsByTagName('input');#}
+{#        form_fields[2].placeholder='Email..';#}
+{##}
+{#		for (const field in form_fields){#}
+{#			form_fields[field].className += ' form-control'#}
+{#		}#}
+{#	</script>#}
+
+</body>
+</html>

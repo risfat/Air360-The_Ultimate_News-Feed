@@ -1,0 +1,346 @@
+
+    #
+    # @staticmethod
+    # def medium_programming():
+    #     feed = feedparser.parse(
+    #         "https://medium.com/feed/tag/programming"
+    #     )
+    #
+    #     news_list = []
+    #
+    #     print("Programming Today: ")
+    #     for i in range(7):
+    #         entry = feed.entries[i]
+    #         description = BeautifulSoup(entry.description, "html.parser")
+    #
+    #         try:
+    #             img = description.find("img").get("src")
+    #
+    #         except:
+    #
+    #             print("Image Not Found")
+    #             img = None
+    #
+    #         news = {
+    #             "title": entry.title,
+    #             "description": description.text,
+    #             "img": img,
+    #             "link": entry.link,
+    #
+    #         }
+    #
+    #         print(img)
+    #
+    #         news_list.append(news)
+    #
+    #     return news_list
+    #
+    # @staticmethod
+    # def medium_python():
+    #     feed_python = feedparser.parse(
+    #         "https://medium.com/feed/tag/python"
+    #     )
+    #     news_list = []
+    #
+    #     print("Python Today: ")
+    #     for i in range(7):
+    #         entry = feed_python.entries[i]
+    #         description = BeautifulSoup(entry.description, "html.parser")
+    #
+    #         try:
+    #             img = description.find("img").get("src")
+    #
+    #         except:
+    #
+    #             print("Image Not Found")
+    #             img = None
+    #
+    #         news = {
+    #             "title": entry.title,
+    #             "description": description.text,
+    #             "img": img,
+    #             "link": entry.link
+    #         }
+    #
+    #         news_list.append(news)
+    #
+    #     return news_list
+    #
+    # @staticmethod
+    # def medium_js():
+    #     feed_python = feedparser.parse(
+    #         "https://medium.com/feed/tag/javascript"
+    #     )
+    #     news_list = []
+    #
+    #     print("Js Today: ")
+    #     for i in range(7):
+    #         entry = feed_python.entries[i]
+    #         description = BeautifulSoup(entry.description, "html.parser")
+    #
+    #         try:
+    #             img = description.find("img").get("src")
+    #
+    #         except:
+    #
+    #             print("Image Not Found")
+    #             img = None
+    #
+    #         news = {
+    #             "title": entry.title,
+    #             "description": description.text,
+    #             "img": img,
+    #             "link": entry.link
+    #         }
+    #
+    #         news_list.append(news)
+    #
+    #     return news_list
+    #
+    # @staticmethod
+    # def medium_java():
+    #     feed_python = feedparser.parse(
+    #         "https://medium.com/feed/tag/java"
+    #     )
+    #     news_list = []
+    #
+    #     print("Java Today: ")
+    #     for i in range(7):
+    #         entry = feed_python.entries[i]
+    #         description = BeautifulSoup(entry.description, "html.parser")
+    #
+    #         try:
+    #             img = description.find("img").get("src")
+    #
+    #         except:
+    #
+    #             print("Image Not Found")
+    #             img = None
+    #
+    #         news = {
+    #             "title": entry.title,
+    #             "description": description.text,
+    #             "img": img,
+    #             "link": entry.link
+    #         }
+    #
+    #         news_list.append(news)
+    #
+    #     return news_list
+    #
+    # @staticmethod
+    # def medium_go():
+    #     feed_python = feedparser.parse(
+    #         "https://medium.com/feed/tag/go"
+    #     )
+    #     news_list = []
+    #
+    #     print("Go Today: ")
+    #     for i in range(7):
+    #         entry = feed_python.entries[i]
+    #         description = BeautifulSoup(entry.description, "html.parser")
+    #
+    #         try:
+    #             img = description.find("img").get("src")
+    #
+    #         except:
+    #
+    #             print("Image Not Found")
+    #             img = None
+    #
+    #         news = {
+    #             "title": entry.title,
+    #             "description": description.text,
+    #             "img": img,
+    #             "link": entry.link
+    #         }
+    #
+    #         news_list.append(news)
+    #
+    #     return news_list
+    #
+    # @staticmethod
+    # def medium_laravel():
+    #     feed_python = feedparser.parse(
+    #         "https://medium.com/feed/tag/laravel"
+    #     )
+    #     news_list = []
+    #
+    #     print("Laravel Today: ")
+    #     for i in range(7):
+    #         entry = feed_python.entries[i]
+    #         description = BeautifulSoup(entry.description, "html.parser")
+    #
+    #         try:
+    #             img = description.find("img").get("src")
+    #
+    #         except:
+    #
+    #             print("Image Not Found")
+    #             img = None
+    #
+    #         news = {
+    #             "title": entry.title,
+    #             "description": description.text,
+    #             "img": img,
+    #             "link": entry.link
+    #         }
+    #
+    #         news_list.append(news)
+    #
+    #     return news_list
+    #
+    # @staticmethod
+    # def medium_django():
+    #     feed_python = feedparser.parse(
+    #         "https://medium.com/feed/tag/django"
+    #     )
+    #     news_list = []
+    #
+    #     print("Django Today: ")
+    #     for i in range(7):
+    #         entry = feed_python.entries[i]
+    #         description = BeautifulSoup(entry.description, "html.parser")
+    #
+    #         try:
+    #             img = description.find("img").get("src")
+    #
+    #         except:
+    #
+    #             print("Image Not Found")
+    #             img = None
+    #
+    #         news = {
+    #             "title": entry.title,
+    #             "description": description.text,
+    #             "img": img,
+    #             "link": entry.link
+    #         }
+    #
+    #         news_list.append(news)
+    #
+    #     return news_list
+    #
+    # @staticmethod
+    # def medium_developer():
+    #     feed_developer = feedparser.parse(
+    #         "https://medium.com/feed/tag/developer"
+    #     )
+    #     news_list = []
+    #
+    #     print("Developer News Today: ")
+    #     for i in range(7):
+    #         entry = feed_developer.entries[i]
+    #         description = BeautifulSoup(entry.description, "html.parser")
+    #
+    #         try:
+    #             img = description.find("img").get("src")
+    #
+    #         except:
+    #
+    #             print("Image Not Found")
+    #             img = None
+    #
+    #         news = {
+    #             "title": entry.title,
+    #             "description": description.text,
+    #             "img": img,
+    #             "link": entry.link
+    #         }
+    #
+    #         news_list.append(news)
+    #
+    #     return news_list
+    #
+    # @staticmethod
+    # def medium_android_development():
+    #     feed_developer = feedparser.parse(
+    #         "https://medium.com/feed/tag/android-development"
+    #     )
+    #     news_list = []
+    #
+    #     print("Android Development News Today: ")
+    #     for i in range(7):
+    #         entry = feed_developer.entries[i]
+    #         description = BeautifulSoup(entry.description, "html.parser")
+    #
+    #         try:
+    #             img = description.find("img").get("src")
+    #
+    #         except:
+    #
+    #             print("Image Not Found")
+    #             img = None
+    #
+    #         news = {
+    #             "title": entry.title,
+    #             "description": description.text,
+    #             "img": img,
+    #             "link": entry.link
+    #         }
+    #
+    #         news_list.append(news)
+    #
+    #     return news_list
+    #
+    # @staticmethod
+    # def medium_technology():
+    #     feed_technology = feedparser.parse(
+    #         "https://medium.com/feed/tag/technology"
+    #     )
+    #     news_list = []
+    #
+    #     print("Tech News Today: ")
+    #     for i in range(7):
+    #         entry = feed_technology.entries[i]
+    #         description = BeautifulSoup(entry.description, "html.parser")
+    #
+    #         try:
+    #             img = description.find("img").get("src")
+    #
+    #         except:
+    #
+    #             print("Image Not Found")
+    #             img = None
+    #
+    #         news = {
+    #             "title": entry.title,
+    #             "description": description.text,
+    #             "img": img,
+    #             "link": entry.link
+    #         }
+    #
+    #         news_list.append(news)
+    #
+    #     return news_list
+    #
+    # @staticmethod
+    # def medium_gadgets():
+    #     feed_technology = feedparser.parse(
+    #         "https://medium.com/feed/tag/gadgets"
+    #     )
+    #     news_list = []
+    #
+    #     print("Gadgets News Today: ")
+    #     for i in range(7):
+    #         entry = feed_technology.entries[i]
+    #         description = BeautifulSoup(entry.description, "html.parser")
+    #
+    #         try:
+    #             img = description.find("img").get("src")
+    #
+    #         except:
+    #
+    #             print("Image Not Found")
+    #             img = None
+    #
+    #         news = {
+    #             "title": entry.title,
+    #             "description": description.text,
+    #             "img": img,
+    #             "link": entry.link
+    #         }
+    #
+    #         news_list.append(news)
+    #
+    #     return news_list

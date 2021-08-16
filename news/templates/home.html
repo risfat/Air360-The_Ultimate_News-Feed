@@ -1,0 +1,1261 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+{% load static %}
+
+<section class="banner-sec">
+        <div class="container">
+    <div class="row">
+            <div class="col-md-3">
+
+{#                 {% for n in local_news %}#}
+
+        <div class="card"> <img class="img-fluid" src="" alt="">
+                <div class="card-img-overlay"> <span class="badge badge-pill badge-danger">{{local_news.0.cat}}</span> </div>
+                <div class="card-body">
+            <div class="news-title">
+                    <h2 class=" title-small"><a href="{{local_news.0.link}}" target="_blank">{{local_news.0.title}}</a></h2>
+                  </div> <br>
+            <p class="card-text"><small class="text-time"><em>{{local_news.0.time}}</em></small></p>
+          </div>
+              </div>
+
+{#                {% endfor %}#}
+
+        <div class="card"> <img class="img-fluid" src="" alt="">
+                <div class="card-img-overlay"> <span class="badge badge-pill badge-danger">{{local_news.1.cat}}</span> </div>
+                <div class="card-body">
+            <div class="news-title">
+                    <h2 class=" title-small"><a href="{{local_news.1.link}}" target="_blank">{{ local_news.1.title}}</a></h2>
+                  </div> <br>
+            <p class="card-text"><small class="text-time"><em>{{local_news.1.time}}</em></small></p>
+          </div>
+              </div>
+
+
+      </div>
+
+
+            <div class="col-md-3">
+        <div class="card"> <img class="img-fluid" src="" alt="">
+                <div class="card-img-overlay"> <span class="badge badge-pill badge-danger">{{local_news.2.cat}}</span> </div>
+                <div class="card-body">
+            <div class="news-title">
+                    <h2 class=" title-small"><a href="{{local_news.2.link}}" target="_blank">{{ local_news.2.title}}</a></h2>
+                  </div> <br>
+            <p class="card-text"><small class="text-time"><em>{{local_news.2.time}}</em></small></p>
+          </div>
+              </div>
+
+
+        <div class="card"> <img class="img-fluid" src="" alt="">
+                <div class="card-img-overlay"> <span class="badge badge-pill badge-danger">{{local_news.3.cat}}</span> </div>
+                <div class="card-body">
+            <div class="news-title">
+                    <h2 class=" title-small"><a href="{{local_news.3.link}}" target="_blank">{{ local_news.3.title}}</a></h2>
+                  </div> <br>
+            <p class="card-text"><small class="text-time"><em>{{local_news.3.time}}</em></small></p>
+          </div>
+              </div>
+
+
+      </div>
+
+
+
+            <div class="col-md-6 top-slider">
+        <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+                <!-- Indicators -->
+                <ol class="carousel-indicators">
+            <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+            <li data-target="#carousel-example-generic" data-slide-to="1"></li>
+            <li data-target="#carousel-example-generic" data-slide-to="2"></li>
+            <li data-target="#carousel-example-generic" data-slide-to="3"></li>
+            <li data-target="#carousel-example-generic" data-slide-to="4"></li>
+            <li data-target="#carousel-example-generic" data-slide-to="5"></li>
+          </ol>
+
+                <!-- Wrapper for slides -->
+                <div class="carousel-inner" role="listbox">
+
+                    {% for n in local_news %}
+{#           https://stackoverflow.com/questions/61890548/display-images-with-carousel-in-django#}
+
+            <div class="carousel-item {% if forloop.first %} active {% endif %}">
+                    <div class="news-block">
+                <div class="news-media"><img class="img-fluid" src="" alt=""></div>
+                <div class="news-title">
+                        <h2 class=" title-large"><a href="{{n.link|striptags}}" target="_blank">{{ n.title|striptags }}</a></h2>
+                      </div> <br>
+                <div class="news-des">{{ n.meta|striptags }}</div>
+                <div class="time-text"><strong>{{n.time|striptags}}</strong></div> <br><br><br>
+                <div></div>
+              </div>
+                  </div>
+
+                    {% endfor %}
+
+
+          </div>
+              </div>
+      </div>
+          </div>
+  </div>
+</section>
+
+
+      <!-- JQUERY 3.2.1.slim -->
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+
+      <!-- CheckBox -->
+      <!-- Syntax: $(selector).toggle(speed, easing, callback) -->
+
+
+<section class="section-01">
+  <div class="container">
+    <center>
+
+        <h2 style="color:rgb(0, 0, 0); font-weight: 600;">
+         Sort News
+        </h2>
+        <h4>
+          Show and Hide Categories Using Checkbox
+        </h4>
+        <div>
+          <br>
+
+<form action="">
+
+
+	<fieldset name="publisher" id="publisher"  class="inputGroup">
+		<legend class="label">Select Publisher</legend>
+		<div class="segmentedControl">
+			<span class="segmentedControl--group">
+				<input type="radio" name="publisher" value="medium" id="MEDIUM"  />
+				<label class="label" for="MEDIUM">MEDIUM.COM</label>
+			</span>
+			<span class="segmentedControl--group">
+				<input type="radio" name="publisher" value="dev" id="DEV"  />
+				<label class="label" for="DEV">DEV.COM</label>
+			</span>
+			<span class="segmentedControl--group">
+				<input type="radio" name="publisher" value="reddit" id="REDDIT"  />
+				<label class="label" for="REDDIT">REDDIT (coming soon)</label>
+			</span>
+		</div>
+	</fieldset>
+<input class="hidden" id='submit' type="submit">
+</form>
+
+
+    <script>
+
+       $(document).ready(function() {
+   $('#publisher').on('change', function() {
+     $('#submit').click();
+
+   });
+});
+
+
+    </script>
+          <br>
+
+        <form>
+          <div class="modern-Checkbox">
+            <input type="checkbox" id="box-1" value="programming">
+            <label for="box-1">Programming</label>
+          </div>
+          <div class="modern-Checkbox">
+            <input type="checkbox" id="box-2" value="python">
+            <label for="box-2">Python</label>
+          </div>
+          <div class="modern-Checkbox">
+            <input type="checkbox" id="box-3" value="javascript">
+            <label for="box-3">Javascript</label>
+          </div>
+          <div class="modern-Checkbox">
+            <input type="checkbox" id="box-4" value="java">
+            <label for="box-4">Java</label>
+          </div>
+          <div class="modern-Checkbox">
+            <input type="checkbox" id="box-5" value="go">
+            <label for="box-5">Go</label>
+          </div>
+          <div class="modern-Checkbox">
+            <input type="checkbox" id="box-6" value="laravel">
+            <label for="box-6">Laravel</label>
+          </div>
+          <div class="modern-Checkbox">
+            <input type="checkbox" id="box-7" value="django">
+            <label for="box-7">Django</label>
+          </div>
+          <div class="modern-Checkbox">
+            <input type="checkbox" id="box-8" value="dev">
+            <label for="box-8">Developer</label>
+          </div>
+          <div class="modern-Checkbox">
+            <input type="checkbox" id="box-9" value="android-dev">
+            <label for="box-9">Android Development</label>
+          </div>
+          <div class="modern-Checkbox">
+            <input type="checkbox" id="box-10" value="technology">
+            <label for="box-10">Technology</label>
+          </div>
+          <div class="modern-Checkbox">
+            <input type="checkbox" id="box-11" value="gadgets">
+            <label for="box-11">Gadgets</label>
+          </div>
+          <div class="modern-Checkbox">
+           <input type="checkbox" id="box-12" value="diu">
+           <label for="box-12">DIU Notice</label>
+          </div>
+
+        </form>
+
+        </div>
+
+
+        <script type="text/javascript">
+            $(document).ready(function() {
+                $('input[type="checkbox"]').click(function() {
+                    const inputValue = $(this).attr("value");
+                    $("." + inputValue).toggle();
+
+                });
+            });
+        </script>
+    </center>
+  </div>
+</section>
+
+
+
+<div class="programming selectt">
+<section class="section-01">
+        <div class="container">
+    <div class="row">
+            <div class="col-lg-8 col-md-12">
+        <h3 class="heading-large">Programming Today</h3>
+
+{#                https://docs.djangoproject.com/en/1.11/ref/templates/builtins/#slice#}
+
+          {% for n in programming|slice:":4" %}
+
+
+           <div class="col-lg-6 card">
+            <div class="card"> <img class="img-fluid" src="" alt="">
+                    <div class="card-body">
+                <div class="news-title"><a href="{{ n.link|striptags }}" target="_blank">
+                  <h2 class="title-small">{{ n.title|striptags }}</h2>
+                  </a></div>
+                <p class="card-text">{{ n.description|striptags }}</p>
+                <p class="card-text"><small class="text-time"><em>{{ n.author|striptags }}</em></small></p>
+              </div>
+                  </div>
+          </div>
+
+
+          {% endfor %}
+
+      </div>
+            <aside class="col-lg-4 side-bar col-md-12">
+        <ul class="nav nav-tabs" role="tablist" id="myTab">
+                <li class="nav-item"> <a class="nav-link active" data-toggle="tab" href="#home" role="tab">Latest</a> </li>
+                <li class="nav-item"> <a class="nav-link" data-toggle="tab" href="#top" role="tab">Top</a> </li>
+                <li class="nav-item"> <a class="nav-link" data-toggle="tab" href="#featured" role="tab">Featured</a> </li>
+              </ul>
+
+        <!-- Tab panes -->
+        <div class="tab-content sidebar-tabing" id="nav-tabContent">
+                <div class="tab-pane active" id="home" role="tabpanel">
+
+
+
+                      {% for n in programming|slice:"4:" %}
+{#                                                                                       https://stackoverflow.com/questions/12924865/how-to-check-if-django-template-variable-is-defined#}
+                    <div class="media"> <a href="{{ n.link|striptags }}" target="_blank"> <img class="d-flex mr-3" src="{% if n.img is None %} {% static 'news/images/No_image_available.jpg' %} {% else  %} {{ n.img }} {% endif %}" alt="Generic placeholder image"></a>
+                    <div class="media-body">
+                        <div class="news-title">
+                            <h2 class="title-small"><a href="{{ n.link|striptags }}" target="_blank">{{ n.title|striptags }}</a></h2>
+                        </div>
+                        <div class="news-author"><span class="time">{{ n.author|striptags }}</span></div>
+                    </div>
+                  </div>
+
+                     {% endfor %}
+
+
+          </div>
+                <div class="tab-pane" id="top" role="tabpanel">
+
+                  <br>
+
+                  <h5>Coming Soon</h5>
+            <!-- <div class="media"> <a href="#"> <img class="d-flex mr-3" src="" alt="Generic placeholder image"></a>
+                    <div class="media-body">
+                <div class="news-title">
+                        <h2 class="title-small"><a href="#">Key Republicans sign letter warning against candidate</a></h2>
+                      </div>
+                <div class="news-auther"><span class="time">1h ago</span></div>
+              </div>
+                  </div>
+            <div class="media"> <a href="#"> <img class="d-flex mr-3" src="" alt="Generic placeholder image"></a>
+                    <div class="media-body">
+                <div class="news-title">
+                        <h2 class="title-small"><a href="#">‘S.N.L.’ to Lose Two Longtime Cast Members</a></h2>
+                      </div>
+                <div class="news-auther"><span class="time">1h ago</span></div>
+              </div>
+                  </div>
+            <div class="media"> <a href="#"> <img class="d-flex mr-3" src="" alt="Generic placeholder image"></a>
+                    <div class="media-body">
+                <div class="news-title">
+                        <h2 class="title-small"><a href="#">Obamacare Appears to Be Making People Healthier</a></h2>
+                      </div>
+                <div class="news-auther"><span class="time">1h ago</span></div>
+              </div>
+                  </div> -->
+          </div>
+                <div class="tab-pane" id="featured" role="tabpanel">
+                  <br>
+
+                  <h5>Coming Soon</h5>
+
+          </div>
+              </div>
+        <!-- <div class="video-sec">
+                <h4 class="heading-small">Featured Video</h4>
+                <div class="video-block">
+            <div class="embed-responsive embed-responsive-4by3">
+                    <iframe class="embed-responsive-item" src="" allowfullscreen></iframe>
+                  </div>
+          </div>
+              </div> -->
+      </aside>
+          </div>
+  </div>
+      </section>
+
+</div>
+
+
+
+
+
+{#Python#}
+
+<div class="python selectt">
+<section class="section-01">
+        <div class="container">
+    <div class="row">
+            <div class="col-lg-8 col-md-12">
+        <h3 class="heading-large">Python Today</h3>
+
+{#                https://docs.djangoproject.com/en/1.11/ref/templates/builtins/#slice#}
+
+          {% for n in python|slice:":4" %}
+
+
+           <div class="col-lg-6 card">
+            <div class="card"> <img class="img-fluid" src="" alt="">
+                    <div class="card-body">
+                <div class="news-title"><a href="{{ n.link|striptags }}" target="_blank">
+                  <h2 class="title-small">{{ n.title|striptags }}</h2>
+                  </a></div>
+                <p class="card-text">{{ n.description|striptags }}</p>
+                <p class="card-text"><small class="text-time"><em>{{ n.author|striptags }}</em></small></p>
+              </div>
+                  </div>
+          </div>
+
+
+          {% endfor %}
+
+      </div>
+            <aside class="col-lg-4 side-bar col-md-12">
+        <ul class="nav nav-tabs" role="tablist" id="myTab">
+                <li class="nav-item"> <a class="nav-link active" data-toggle="tab" href="#home" role="tab">Latest</a> </li>
+                <li class="nav-item"> <a class="nav-link" data-toggle="tab" href="#top" role="tab">Top</a> </li>
+                <li class="nav-item"> <a class="nav-link" data-toggle="tab" href="#featured" role="tab">Featured</a> </li>
+              </ul>
+
+        <!-- Tab panes -->
+        <div class="tab-content sidebar-tabing" id="nav-tabContent">
+                <div class="tab-pane active" id="home" role="tabpanel">
+
+
+
+                      {% for n in python|slice:"4:" %}
+
+                    <div class="media"> <a href="{{ n.link|striptags }}" target="_blank"> <img class="d-flex mr-3" src="{% if n.img is None %} {% static 'news/images/No_image_available.jpg' %} {% else  %} {{ n.img }} {% endif %}" alt="Generic placeholder image"></a>
+                    <div class="media-body">
+                        <div class="news-title">
+                            <h2 class="title-small"><a href="{{ n.link|striptags }}" target="_blank">{{ n.title|striptags }}</a></h2>
+                        </div>
+                        <div class="news-author"><span class="time">{{ n.author|striptags }}</span></div>
+                    </div>
+                  </div>
+
+                     {% endfor %}
+
+
+          </div>
+                <div class="tab-pane" id="top" role="tabpanel">
+
+                  <br>
+
+                  <h5>Coming Soon</h5>
+
+          </div>
+                <div class="tab-pane" id="featured" role="tabpanel">
+                  <br>
+
+                  <h5>Coming Soon</h5>
+
+          </div>
+              </div>
+
+      </aside>
+          </div>
+  </div>
+      </section>
+
+</div>
+
+
+
+
+
+
+{#Js#}
+
+
+<div class="javascript selectt">
+<section class="section-01">
+        <div class="container">
+    <div class="row">
+            <div class="col-lg-8 col-md-12">
+        <h3 class="heading-large">Javascript Today</h3>
+
+{#                https://docs.djangoproject.com/en/1.11/ref/templates/builtins/#slice#}
+
+          {% for n in javascript|slice:":4" %}
+
+
+           <div class="col-lg-6 card">
+            <div class="card"> <img class="img-fluid" src="" alt="">
+                    <div class="card-body">
+                <div class="news-title"><a href="{{ n.link|striptags }}" target="_blank">
+                  <h2 class="title-small">{{ n.title|striptags }}</h2>
+                  </a></div>
+                <p class="card-text">{{ n.description|striptags }}</p>
+                <p class="card-text"><small class="text-time"><em>{{ n.author|striptags }}</em></small></p>
+              </div>
+                  </div>
+          </div>
+
+
+          {% endfor %}
+
+      </div>
+            <aside class="col-lg-4 side-bar col-md-12">
+        <ul class="nav nav-tabs" role="tablist" id="myTab">
+                <li class="nav-item"> <a class="nav-link active" data-toggle="tab" href="#home" role="tab">Latest</a> </li>
+                <li class="nav-item"> <a class="nav-link" data-toggle="tab" href="#top" role="tab">Top</a> </li>
+                <li class="nav-item"> <a class="nav-link" data-toggle="tab" href="#featured" role="tab">Featured</a> </li>
+              </ul>
+
+        <!-- Tab panes -->
+        <div class="tab-content sidebar-tabing" id="nav-tabContent">
+                <div class="tab-pane active" id="home" role="tabpanel">
+
+
+
+                      {% for n in javascript|slice:"4:" %}
+
+                    <div class="media"> <a href="{{ n.link|striptags }}" target="_blank"> <img class="d-flex mr-3" src="{% if n.img is None %} {% static 'news/images/No_image_available.jpg' %} {% else  %} {{ n.img }} {% endif %}" alt="Generic placeholder image"></a>
+                    <div class="media-body">
+                        <div class="news-title">
+                            <h2 class="title-small"><a href="{{ n.link|striptags }}" target="_blank">{{ n.title|striptags }}</a></h2>
+                        </div>
+                        <div class="news-author"><span class="time">{{ n.author|striptags }}</span></div>
+                    </div>
+                  </div>
+
+                     {% endfor %}
+
+
+          </div>
+                <div class="tab-pane" id="top" role="tabpanel">
+
+                  <br>
+
+                  <h5>Coming Soon</h5>
+
+          </div>
+                <div class="tab-pane" id="featured" role="tabpanel">
+                  <br>
+
+                  <h5>Coming Soon</h5>
+
+          </div>
+              </div>
+
+      </aside>
+          </div>
+  </div>
+      </section>
+
+</div>
+
+
+
+
+{#Java    #}
+
+<div class="java selectt">
+<section class="section-01">
+        <div class="container">
+    <div class="row">
+            <div class="col-lg-8 col-md-12">
+        <h3 class="heading-large">Java Today</h3>
+
+{#                https://docs.djangoproject.com/en/1.11/ref/templates/builtins/#slice#}
+
+          {% for n in java|slice:":4" %}
+
+
+           <div class="col-lg-6 card">
+            <div class="card"> <img class="img-fluid" src="" alt="">
+                    <div class="card-body">
+                <div class="news-title"><a href="{{ n.link|striptags }}" target="_blank">
+                  <h2 class="title-small">{{ n.title|striptags }}</h2>
+                  </a></div>
+                <p class="card-text">{{ n.description|striptags }}</p>
+                <p class="card-text"><small class="text-time"><em>{{ n.author|striptags }}</em></small></p>
+              </div>
+                  </div>
+          </div>
+
+
+          {% endfor %}
+
+      </div>
+            <aside class="col-lg-4 side-bar col-md-12">
+        <ul class="nav nav-tabs" role="tablist" id="myTab">
+                <li class="nav-item"> <a class="nav-link active" data-toggle="tab" href="#home" role="tab">Latest</a> </li>
+                <li class="nav-item"> <a class="nav-link" data-toggle="tab" href="#top" role="tab">Top</a> </li>
+                <li class="nav-item"> <a class="nav-link" data-toggle="tab" href="#featured" role="tab">Featured</a> </li>
+              </ul>
+
+        <!-- Tab panes -->
+        <div class="tab-content sidebar-tabing" id="nav-tabContent">
+                <div class="tab-pane active" id="home" role="tabpanel">
+
+
+
+                      {% for n in java|slice:"4:" %}
+
+                    <div class="media"> <a href="{{ n.link|striptags }}" target="_blank"> <img class="d-flex mr-3" src="{% if n.img is None %} {% static 'news/images/No_image_available.jpg' %} {% else  %} {{ n.img }} {% endif %}" alt="Generic placeholder image"></a>
+                    <div class="media-body">
+                        <div class="news-title">
+                            <h2 class="title-small"><a href="{{ n.link|striptags }}" target="_blank">{{ n.title|striptags }}</a></h2>
+                        </div>
+                        <div class="news-author"><span class="time">{{ n.author|striptags }}</span></div>
+                    </div>
+                  </div>
+
+                     {% endfor %}
+
+
+          </div>
+                <div class="tab-pane" id="top" role="tabpanel">
+
+                  <br>
+
+                  <h5>Coming Soon</h5>
+
+          </div>
+                <div class="tab-pane" id="featured" role="tabpanel">
+                  <br>
+
+                  <h5>Coming Soon</h5>
+
+          </div>
+              </div>
+
+      </aside>
+          </div>
+  </div>
+      </section>
+
+</div>
+
+
+
+{#GO    #}
+
+<div class="go selectt">
+<section class="section-01">
+        <div class="container">
+    <div class="row">
+            <div class="col-lg-8 col-md-12">
+        <h3 class="heading-large">GO Today</h3>
+
+{#                https://docs.djangoproject.com/en/1.11/ref/templates/builtins/#slice#}
+
+          {% for n in go|slice:":4" %}
+
+
+           <div class="col-lg-6 card">
+            <div class="card"> <img class="img-fluid" src="" alt="">
+                    <div class="card-body">
+                <div class="news-title"><a href="{{ n.link|striptags }}" target="_blank">
+                  <h2 class="title-small">{{ n.title|striptags }}</h2>
+                  </a></div>
+                <p class="card-text">{{ n.description|striptags }}</p>
+                <p class="card-text"><small class="text-time"><em>{{ n.author|striptags }}</em></small></p>
+              </div>
+                  </div>
+          </div>
+
+
+          {% endfor %}
+
+      </div>
+            <aside class="col-lg-4 side-bar col-md-12">
+        <ul class="nav nav-tabs" role="tablist" id="myTab">
+                <li class="nav-item"> <a class="nav-link active" data-toggle="tab" href="#home" role="tab">Latest</a> </li>
+                <li class="nav-item"> <a class="nav-link" data-toggle="tab" href="#top" role="tab">Top</a> </li>
+                <li class="nav-item"> <a class="nav-link" data-toggle="tab" href="#featured" role="tab">Featured</a> </li>
+              </ul>
+
+        <!-- Tab panes -->
+        <div class="tab-content sidebar-tabing" id="nav-tabContent">
+                <div class="tab-pane active" id="home" role="tabpanel">
+
+
+
+                      {% for n in go|slice:"4:" %}
+
+                    <div class="media"> <a href="{{ n.link|striptags }}" target="_blank"> <img class="d-flex mr-3" src="{% if n.img is None %} {% static 'news/images/No_image_available.jpg' %} {% else  %} {{ n.img }} {% endif %}" alt="Generic placeholder image"></a>
+                    <div class="media-body">
+                        <div class="news-title">
+                            <h2 class="title-small"><a href="{{ n.link|striptags }}" target="_blank">{{ n.title|striptags }}</a></h2>
+                        </div>
+                        <div class="news-author"><span class="time">{{ n.author|striptags }}</span></div>
+                    </div>
+                  </div>
+
+                     {% endfor %}
+
+
+          </div>
+                <div class="tab-pane" id="top" role="tabpanel">
+
+                  <br>
+
+                  <h5>Coming Soon</h5>
+
+          </div>
+                <div class="tab-pane" id="featured" role="tabpanel">
+                  <br>
+
+                  <h5>Coming Soon</h5>
+
+          </div>
+              </div>
+
+      </aside>
+          </div>
+  </div>
+      </section>
+
+</div>
+
+
+{#Laravel#}
+
+<div class="laravel selectt">
+<section class="section-01">
+        <div class="container">
+    <div class="row">
+            <div class="col-lg-8 col-md-12">
+        <h3 class="heading-large">Laravel Today</h3>
+
+{#                https://docs.djangoproject.com/en/1.11/ref/templates/builtins/#slice#}
+
+          {% for n in laravel|slice:":4" %}
+
+
+           <div class="col-lg-6 card">
+            <div class="card"> <img class="img-fluid" src="" alt="">
+                    <div class="card-body">
+                <div class="news-title"><a href="{{ n.link|striptags }}" target="_blank">
+                  <h2 class="title-small">{{ n.title|striptags }}</h2>
+                  </a></div>
+                <p class="card-text">{{ n.description|striptags }}</p>
+                <p class="card-text"><small class="text-time"><em>{{ n.author|striptags }}</em></small></p>
+              </div>
+                  </div>
+          </div>
+
+
+          {% endfor %}
+
+      </div>
+            <aside class="col-lg-4 side-bar col-md-12">
+        <ul class="nav nav-tabs" role="tablist" id="myTab">
+                <li class="nav-item"> <a class="nav-link active" data-toggle="tab" href="#home" role="tab">Latest</a> </li>
+                <li class="nav-item"> <a class="nav-link" data-toggle="tab" href="#top" role="tab">Top</a> </li>
+                <li class="nav-item"> <a class="nav-link" data-toggle="tab" href="#featured" role="tab">Featured</a> </li>
+              </ul>
+
+        <!-- Tab panes -->
+        <div class="tab-content sidebar-tabing" id="nav-tabContent">
+                <div class="tab-pane active" id="home" role="tabpanel">
+
+
+
+                      {% for n in laravel|slice:"4:" %}
+
+                    <div class="media"> <a href="{{ n.link|striptags }}" target="_blank"> <img class="d-flex mr-3" src="{% if n.img is None %} {% static 'news/images/No_image_available.jpg' %} {% else  %} {{ n.img }} {% endif %}" alt="Generic placeholder image"></a>
+                    <div class="media-body">
+                        <div class="news-title">
+                            <h2 class="title-small"><a href="{{ n.link|striptags }}" target="_blank">{{ n.title|striptags }}</a></h2>
+                        </div>
+                        <div class="news-author"><span class="time">{{ n.author|striptags }}</span></div>
+                    </div>
+                  </div>
+
+                     {% endfor %}
+
+
+          </div>
+                <div class="tab-pane" id="top" role="tabpanel">
+
+                  <br>
+
+                  <h5>Coming Soon</h5>
+
+          </div>
+                <div class="tab-pane" id="featured" role="tabpanel">
+                  <br>
+
+                  <h5>Coming Soon</h5>
+
+          </div>
+              </div>
+
+      </aside>
+          </div>
+  </div>
+      </section>
+
+</div>
+
+
+
+{#Django    #}
+
+
+<div class="django selectt">
+<section class="section-01">
+        <div class="container">
+    <div class="row">
+            <div class="col-lg-8 col-md-12">
+        <h3 class="heading-large">Django Today</h3>
+
+{#                https://docs.djangoproject.com/en/1.11/ref/templates/builtins/#slice#}
+
+          {% for n in django|slice:":4" %}
+
+
+           <div class="col-lg-6 card">
+            <div class="card"> <img class="img-fluid" src="" alt="">
+                    <div class="card-body">
+                <div class="news-title"><a href="{{ n.link|striptags }}" target="_blank">
+                  <h2 class="title-small">{{ n.title|striptags }}</h2>
+                  </a></div>
+                <p class="card-text">{{ n.description|striptags }}</p>
+                <p class="card-text"><small class="text-time"><em>{{ n.author|striptags }}</em></small></p>
+              </div>
+                  </div>
+          </div>
+
+
+          {% endfor %}
+
+      </div>
+            <aside class="col-lg-4 side-bar col-md-12">
+        <ul class="nav nav-tabs" role="tablist" id="myTab">
+                <li class="nav-item"> <a class="nav-link active" data-toggle="tab" href="#home" role="tab">Latest</a> </li>
+                <li class="nav-item"> <a class="nav-link" data-toggle="tab" href="#top" role="tab">Top</a> </li>
+                <li class="nav-item"> <a class="nav-link" data-toggle="tab" href="#featured" role="tab">Featured</a> </li>
+              </ul>
+
+        <!-- Tab panes -->
+        <div class="tab-content sidebar-tabing" id="nav-tabContent">
+                <div class="tab-pane active" id="home" role="tabpanel">
+
+
+
+                      {% for n in django|slice:"4:" %}
+
+                    <div class="media"> <a href="{{ n.link|striptags }}" target="_blank"> <img class="d-flex mr-3" src="{% if n.img is None %} {% static 'news/images/No_image_available.jpg' %} {% else  %} {{ n.img }} {% endif %}" alt="Generic placeholder image"></a>
+                    <div class="media-body">
+                        <div class="news-title">
+                            <h2 class="title-small"><a href="{{ n.link|striptags }}" target="_blank">{{ n.title|striptags }}</a></h2>
+                        </div>
+                        <div class="news-author"><span class="time">{{ n.author|striptags }}</span></div>
+                    </div>
+                  </div>
+
+                     {% endfor %}
+
+
+          </div>
+                <div class="tab-pane" id="top" role="tabpanel">
+
+                  <br>
+
+                  <h5>Coming Soon</h5>
+
+          </div>
+                <div class="tab-pane" id="featured" role="tabpanel">
+                  <br>
+
+                  <h5>Coming Soon</h5>
+
+          </div>
+              </div>
+
+      </aside>
+          </div>
+  </div>
+      </section>
+
+</div>
+
+
+
+
+{#Developer#}
+
+<div class="dev selectt">
+<section class="section-01">
+        <div class="container">
+    <div class="row">
+            <div class="col-lg-8 col-md-12">
+        <h3 class="heading-large">Developer Today</h3>
+
+{#                https://docs.djangoproject.com/en/1.11/ref/templates/builtins/#slice#}
+
+          {% for n in dev|slice:":4" %}
+
+
+           <div class="col-lg-6 card">
+            <div class="card"> <img class="img-fluid" src="" alt="">
+                    <div class="card-body">
+                <div class="news-title"><a href="{{ n.link|striptags }}" target="_blank">
+                  <h2 class="title-small">{{ n.title|striptags }}</h2>
+                  </a></div>
+                <p class="card-text">{{ n.description|striptags }}</p>
+                <p class="card-text"><small class="text-time"><em>{{ n.author|striptags }}</em></small></p>
+              </div>
+                  </div>
+          </div>
+
+
+          {% endfor %}
+
+      </div>
+            <aside class="col-lg-4 side-bar col-md-12">
+        <ul class="nav nav-tabs" role="tablist" id="myTab">
+                <li class="nav-item"> <a class="nav-link active" data-toggle="tab" href="#home" role="tab">Latest</a> </li>
+                <li class="nav-item"> <a class="nav-link" data-toggle="tab" href="#top" role="tab">Top</a> </li>
+                <li class="nav-item"> <a class="nav-link" data-toggle="tab" href="#featured" role="tab">Featured</a> </li>
+              </ul>
+
+        <!-- Tab panes -->
+        <div class="tab-content sidebar-tabing" id="nav-tabContent">
+                <div class="tab-pane active" id="home" role="tabpanel">
+
+
+
+                      {% for n in dev|slice:"4:" %}
+
+                    <div class="media"> <a href="{{ n.link|striptags }}" target="_blank"> <img class="d-flex mr-3" src="{% if n.img is None %} {% static 'news/images/No_image_available.jpg' %} {% else  %} {{ n.img }} {% endif %}" alt="Generic placeholder image"></a>
+                    <div class="media-body">
+                        <div class="news-title">
+                            <h2 class="title-small"><a href="{{ n.link|striptags }}" target="_blank">{{ n.title|striptags }}</a></h2>
+                        </div>
+                        <div class="news-author"><span class="time">{{ n.author|striptags }}</span></div>
+                    </div>
+                  </div>
+
+                     {% endfor %}
+
+
+          </div>
+                <div class="tab-pane" id="top" role="tabpanel">
+
+                  <br>
+
+                  <h5>Coming Soon</h5>
+
+          </div>
+                <div class="tab-pane" id="featured" role="tabpanel">
+                  <br>
+
+                  <h5>Coming Soon</h5>
+
+          </div>
+              </div>
+
+      </aside>
+          </div>
+  </div>
+      </section>
+
+</div>
+
+
+
+
+{#Android Developer    #}
+
+
+<div class="android-dev selectt">
+<section class="section-01">
+        <div class="container">
+    <div class="row">
+            <div class="col-lg-8 col-md-12">
+        <h3 class="heading-large">Android Development Today </h3>
+
+{#                https://docs.djangoproject.com/en/1.11/ref/templates/builtins/#slice#}
+
+          {% for n in android|slice:":4" %}
+
+
+           <div class="col-lg-6 card">
+            <div class="card"> <img class="img-fluid" src="" alt="">
+                    <div class="card-body">
+                <div class="news-title"><a href="{{ n.link|striptags }}" target="_blank">
+                  <h2 class="title-small">{{ n.title|striptags }}</h2>
+                  </a></div>
+                <p class="card-text">{{ n.description|striptags }}</p>
+                <p class="card-text"><small class="text-time"><em>{{ n.author|striptags }}</em></small></p>
+              </div>
+                  </div>
+          </div>
+
+
+          {% endfor %}
+
+      </div>
+            <aside class="col-lg-4 side-bar col-md-12">
+        <ul class="nav nav-tabs" role="tablist" id="myTab">
+                <li class="nav-item"> <a class="nav-link active" data-toggle="tab" href="#home" role="tab">Latest</a> </li>
+                <li class="nav-item"> <a class="nav-link" data-toggle="tab" href="#top" role="tab">Top</a> </li>
+                <li class="nav-item"> <a class="nav-link" data-toggle="tab" href="#featured" role="tab">Featured</a> </li>
+              </ul>
+
+        <!-- Tab panes -->
+        <div class="tab-content sidebar-tabing" id="nav-tabContent">
+                <div class="tab-pane active" id="home" role="tabpanel">
+
+
+
+                      {% for n in android|slice:"4:" %}
+
+                    <div class="media"> <a href="{{ n.link|striptags }}" target="_blank"> <img class="d-flex mr-3" src="{% if n.img is None %} {% static 'news/images/No_image_available.jpg' %} {% else  %} {{ n.img }} {% endif %}" alt="Generic placeholder image"></a>
+                    <div class="media-body">
+                        <div class="news-title">
+                            <h2 class="title-small"><a href="{{ n.link|striptags }}" target="_blank">{{ n.title|striptags }}</a></h2>
+                        </div>
+                        <div class="news-author"><span class="time">{{ n.author|striptags }}</span></div>
+                    </div>
+                  </div>
+
+                     {% endfor %}
+
+
+          </div>
+                <div class="tab-pane" id="top" role="tabpanel">
+
+                  <br>
+
+                  <h5>Coming Soon</h5>
+
+          </div>
+                <div class="tab-pane" id="featured" role="tabpanel">
+                  <br>
+
+                  <h5>Coming Soon</h5>
+
+          </div>
+              </div>
+
+      </aside>
+          </div>
+  </div>
+      </section>
+
+</div>
+
+
+
+{#Technology#}
+
+
+<div class="technology selectt">
+<section class="section-01">
+        <div class="container">
+    <div class="row">
+            <div class="col-lg-8 col-md-12">
+        <h3 class="heading-large">Technology Today</h3>
+
+{#                https://docs.djangoproject.com/en/1.11/ref/templates/builtins/#slice#}
+
+          {% for n in technology|slice:":4" %}
+
+
+           <div class="col-lg-6 card">
+            <div class="card"> <img class="img-fluid" src="" alt="">
+                    <div class="card-body">
+                <div class="news-title"><a href="{{ n.link|striptags }}" target="_blank">
+                  <h2 class="title-small">{{ n.title|striptags }}</h2>
+                  </a></div>
+                <p class="card-text">{{ n.description|striptags }}</p>
+                <p class="card-text"><small class="text-time"><em>{{ n.author|striptags }}</em></small></p>
+              </div>
+                  </div>
+          </div>
+
+
+          {% endfor %}
+
+      </div>
+            <aside class="col-lg-4 side-bar col-md-12">
+        <ul class="nav nav-tabs" role="tablist" id="myTab">
+                <li class="nav-item"> <a class="nav-link active" data-toggle="tab" href="#home" role="tab">Latest</a> </li>
+                <li class="nav-item"> <a class="nav-link" data-toggle="tab" href="#top" role="tab">Top</a> </li>
+                <li class="nav-item"> <a class="nav-link" data-toggle="tab" href="#featured" role="tab">Featured</a> </li>
+              </ul>
+
+        <!-- Tab panes -->
+        <div class="tab-content sidebar-tabing" id="nav-tabContent">
+                <div class="tab-pane active" id="home" role="tabpanel">
+
+
+
+                      {% for n in technology|slice:"4:" %}
+
+                    <div class="media"> <a href="{{ n.link|striptags }}" target="_blank"> <img class="d-flex mr-3" src="{% if n.img is None %} {% static 'news/images/No_image_available.jpg' %} {% else  %} {{ n.img }} {% endif %}" alt="Generic placeholder image"></a>
+                    <div class="media-body">
+                        <div class="news-title">
+                            <h2 class="title-small"><a href="{{ n.link|striptags }}" target="_blank">{{ n.title|striptags }}</a></h2>
+                        </div>
+                        <div class="news-author"><span class="time">{{ n.author|striptags }}</span></div>
+                    </div>
+                  </div>
+
+                     {% endfor %}
+
+
+          </div>
+                <div class="tab-pane" id="top" role="tabpanel">
+
+                  <br>
+
+                  <h5>Coming Soon</h5>
+
+          </div>
+                <div class="tab-pane" id="featured" role="tabpanel">
+                  <br>
+
+                  <h5>Coming Soon</h5>
+
+          </div>
+              </div>
+
+      </aside>
+          </div>
+  </div>
+      </section>
+
+</div>
+
+
+
+{#Gadgets#}
+
+
+<div class="gadgets selectt">
+<section class="section-01">
+        <div class="container">
+    <div class="row">
+            <div class="col-lg-8 col-md-12">
+        <h3 class="heading-large">Gadgets Today</h3>
+
+{#                https://docs.djangoproject.com/en/1.11/ref/templates/builtins/#slice#}
+
+          {% for n in gadgets|slice:":4" %}
+
+
+           <div class="col-lg-6 card">
+            <div class="card"> <img class="img-fluid" src="" alt="">
+                    <div class="card-body">
+                <div class="news-title"><a href="{{ n.link|striptags }}" target="_blank">
+                  <h2 class="title-small">{{ n.title|striptags }}</h2>
+                  </a></div>
+                <p class="card-text">{{ n.description|striptags }}</p>
+                <p class="card-text"><small class="text-time"><em>{{ n.author|striptags }}</em></small></p>
+              </div>
+                  </div>
+          </div>
+
+
+          {% endfor %}
+
+      </div>
+            <aside class="col-lg-4 side-bar col-md-12">
+        <ul class="nav nav-tabs" role="tablist" id="myTab">
+                <li class="nav-item"> <a class="nav-link active" data-toggle="tab" href="#home" role="tab">Latest</a> </li>
+                <li class="nav-item"> <a class="nav-link" data-toggle="tab" href="#top" role="tab">Top</a> </li>
+                <li class="nav-item"> <a class="nav-link" data-toggle="tab" href="#featured" role="tab">Featured</a> </li>
+              </ul>
+
+        <!-- Tab panes -->
+        <div class="tab-content sidebar-tabing" id="nav-tabContent">
+                <div class="tab-pane active" id="home" role="tabpanel">
+
+
+
+                      {% for n in gadgets|slice:"4:" %}
+
+                    <div class="media"> <a href="{{ n.link|striptags }}" target="_blank"> <img class="d-flex mr-3" src="{% if n.img is None %} {% static 'news/images/No_image_available.jpg' %} {% else  %} {{ n.img }} {% endif %}" alt="Generic placeholder image"></a>
+                    <div class="media-body">
+                        <div class="news-title">
+                            <h2 class="title-small"><a href="{{ n.link|striptags }}" target="_blank">{{ n.title|striptags }}</a></h2>
+                        </div>
+                        <div class="news-author"><span class="time">{{ n.author|striptags }}</span></div>
+                    </div>
+                  </div>
+
+                     {% endfor %}
+
+
+          </div>
+                <div class="tab-pane" id="top" role="tabpanel">
+
+                  <br>
+
+                  <h5>Coming Soon</h5>
+
+          </div>
+                <div class="tab-pane" id="featured" role="tabpanel">
+                  <br>
+
+                  <h5>Coming Soon</h5>
+
+          </div>
+              </div>
+
+      </aside>
+          </div>
+  </div>
+      </section>
+
+</div>
+
+
+
+
+{#DIU#}
+
+
+<div class="diu selectt">
+<section class="section-01">
+        <div class="container">
+    <div class="row">
+            <div class="col-lg-8 col-md-12">
+        <h3 class="heading-large">DIU Today</h3>
+
+{#                https://docs.djangoproject.com/en/1.11/ref/templates/builtins/#slice#}
+
+          {% for n in diu_notice|slice:"4:" %}
+
+
+           <div class="col-lg-6 card">
+            <div class="card"> <img class="img-fluid" src="" alt="">
+                    <div class="card-body">
+                <div class="news-title"><a href="{{ n.link|striptags }}" target="_blank">
+                  <h2 class="title-small">{{ n.title|striptags }}</h2>
+                  </a></div> <br>
+                <p class="card-text">{{ n.department|striptags }}</p>
+                <p class="card-text"><small class="text-time"><em>{{ n.date|striptags }}</em></small></p>
+              </div>
+                  </div>
+          </div>
+
+
+          {% endfor %}
+
+      </div>
+            <aside class="col-lg-4 side-bar col-md-12">
+        <ul class="nav nav-tabs" role="tablist" id="myTab">
+                <li class="nav-item"> <a class="nav-link active" data-toggle="tab" href="#home" role="tab">Latest</a> </li>
+                <li class="nav-item"> <a class="nav-link" data-toggle="tab" href="#top" role="tab">Top</a> </li>
+                <li class="nav-item"> <a class="nav-link" data-toggle="tab" href="#featured" role="tab">Featured</a> </li>
+              </ul>
+
+        <!-- Tab panes -->
+        <div class="tab-content sidebar-tabing" id="nav-tabContent">
+                <div class="tab-pane active" id="home" role="tabpanel">
+
+
+
+                      {% for n in diu_notice|slice:":4" %}
+
+                    <div class="media"> <a href="{{ n.link|striptags }}" target="_blank"> <img class="d-flex mr-3" src="{% if n.img is None %} {% static 'news/images/No_image_available.jpg' %} {% else  %} {{ n.img }} {% endif %}" alt="Generic placeholder image"></a>
+                    <div class="media-body">
+                        <div class="news-title">
+                            <h2 class="title-small"><a href="{{ n.link|striptags }}" target="_blank">{{ n.title|striptags }}</a></h2>
+                        </div>
+                        <div class="news-author"><span class="time">{{ n.date|striptags }}</span></div>
+                    </div>
+                  </div>
+
+                     {% endfor %}
+
+
+          </div>
+                <div class="tab-pane" id="top" role="tabpanel">
+
+                  <br>
+
+                  <h5>Coming Soon</h5>
+
+          </div>
+                <div class="tab-pane" id="featured" role="tabpanel">
+                  <br>
+
+                  <h5>Coming Soon</h5>
+
+          </div>
+              </div>
+
+      </aside>
+          </div>
+  </div>
+      </section>
+
+</div>
+
+
+
+{% endblock %}

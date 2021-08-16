@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    {% load static %}
+    <link href="{% static 'users/css/style.css' %}" rel="stylesheet">
+     <script src="{% static 'users/js/script.js' %}"></script>
+    <link rel="icon" type="image/png" href="{% static 'images/ico.png' %}"/>
+
+
+    <title>Air360 Login</title>
+</head>
+<body>
+
+
+
+<section>
+
+  <div class="box">
+
+    <div class="square" style="--i:0;"></div>
+    <div class="square" style="--i:1;"></div>
+    <div class="square" style="--i:2;"></div>
+    <div class="square" style="--i:3;"></div>
+    <div class="square" style="--i:4;"></div>
+    <div class="square" style="--i:5;"></div>
+
+   <div class="container">
+    <div class="form">
+      <h2>LOGIN to Air360</h2>
+      <form action="" method="POST">
+
+          {% csrf_token %}
+
+
+          {% for message in messages %}
+
+            <p>{{ message }}</p>
+
+          {% endfor %}
+
+<br>
+
+        <div class="inputBx">
+          <input type="text" name="username" required="required">
+          <span>Login</span>
+          <img src="https://www.flaticon.com/svg/static/icons/svg/709/709699.svg" alt="user">
+        </div>
+        <div class="inputBx password">
+          <input id="password-input" type="password" name="password" required="required">
+          <span>Password</span>
+          <a href="#" class="password-control" onclick="return show_hide_password(this);"></a>
+          <img src="https://www.flaticon.com/svg/static/icons/svg/1828/1828471.svg" alt="lock">
+        </div>
+        <label class="remember"><input type="checkbox">
+          Remember</label>
+        <div class="inputBx">
+          <input type="submit" value="Log in" >
+
+
+
+
+        </div>
+      </form>
+      <p>Forgot password? <a href="#">Click Here</a></p>
+      <p>Don't have an account <a href="{% url 'register' %}">Sign up</a></p>
+    </div>
+  </div>
+
+  </div>
+</section>
+
+
+
+
+</body>
+</html>

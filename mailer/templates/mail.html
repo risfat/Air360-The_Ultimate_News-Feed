@@ -1,0 +1,236 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+{% load static %}
+
+
+
+
+
+
+
+
+      <!-- JQUERY 3.2.1.slim -->
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"
+        xmlns="http://www.w3.org/1999/html"></script>
+
+      <!-- CheckBox -->
+      <!-- Syntax: $(selector).toggle(speed, easing, callback) -->
+
+
+<section class="section-01">
+  <div class="container">
+    <center>
+
+        <h2 style="color:rgb(0, 0, 0); font-weight: 600;">
+         Sort News
+        </h2>
+        <h4>
+          Select The Categories You Prefer
+        </h4>
+        <div>
+          <br>
+{# scheduled-mail  #}
+<form action="" method="POST">
+    {% csrf_token %}
+
+
+	<fieldset name="publisher" id="publisher"  class="inputGroup">
+		<legend class="label">Select Publisher</legend>
+		<div class="segmentedControl">
+			<span class="segmentedControl--group">
+				<input type="radio" name="publisher" value="medium" id="MEDIUM"  />
+				<label class="label" for="MEDIUM">MEDIUM.COM</label>
+			</span>
+			<span class="segmentedControl--group">
+				<input type="radio" name="publisher" value="dev" id="DEV"  />
+				<label class="label" for="DEV">DEV.COM</label>
+			</span>
+			<span class="segmentedControl--group">
+				<input type="radio" name="publisher" value="reddit" id="REDDIT"  />
+				<label class="label" for="REDDIT">REDDIT (coming soon)</label>
+			</span>
+		</div>
+	</fieldset>
+
+
+
+
+
+{##}
+{#<select name="ii" id="cars">#}
+{#    <option value="">Choose</option>#}
+{#    <option value="1">Toyota</option>#}
+{#    <option value="2">Nissan</option>#}
+{#    <option value="3">Dodge</option>#}
+{#</select>#}
+
+
+          <br>
+
+
+          <div class="modern-Checkbox">
+            <input type="checkbox" name ="programming" id="box-1" value="programming">
+            <label for="box-1">Programming</label>
+          </div>
+          <div class="modern-Checkbox">
+            <input type="checkbox" name ="python" id="box-2" value="python">
+            <label for="box-2">Python</label>
+          </div>
+          <div class="modern-Checkbox">
+            <input type="checkbox" name ="javascript" id="box-3" value="javascript">
+            <label for="box-3">Javascript</label>
+          </div>
+          <div class="modern-Checkbox">
+            <input type="checkbox" name ="java" id="box-4" value="java">
+            <label for="box-4">Java</label>
+          </div>
+          <div class="modern-Checkbox">
+            <input type="checkbox" name="go" id="box-5" value="go">
+            <label for="box-5">Go</label>
+          </div>
+          <div class="modern-Checkbox">
+            <input type="checkbox" name="laravel" id="box-6" value="laravel">
+            <label for="box-6">Laravel</label>
+          </div>
+          <div class="modern-Checkbox">
+            <input type="checkbox" name="django" id="box-7" value="django">
+            <label for="box-7">Django</label>
+          </div>
+          <div class="modern-Checkbox">
+            <input type="checkbox" name="dev" id="box-8" value="dev">
+            <label for="box-8">Developer</label>
+          </div>
+          <div class="modern-Checkbox">
+            <input type="checkbox" name="android-development" id="box-9" value="android-dev">
+            <label for="box-9">Android Development</label>
+          </div>
+          <div class="modern-Checkbox">
+            <input type="checkbox" name="technology" id="box-10" value="technology">
+            <label for="box-10">Technology</label>
+          </div>
+          <div class="modern-Checkbox">
+            <input type="checkbox" name="gadgets" id="box-11" value="gadgets">
+            <label for="box-11">Gadgets</label>
+          </div>
+
+<br>
+<br>
+
+
+
+{#  Select  Time#}
+
+      <legend class="label">Send the Mails Daily At</legend>
+
+
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-md-auto">
+
+<select name="hour" class="form-control" id="FormControlSelect1" required>
+      <option value="13">1 PM</option>
+      <option value="14">2 PM</option>
+      <option value="15">3 PM</option>
+      <option value="16">4 PM</option>
+      <option value="17">5 PM</option>
+      <option value="18">6 PM</option>
+      <option value="19">7 PM</option>
+      <option value="20">8 PM</option>
+      <option value="21">9 PM</option>
+      <option value="22">10 PM</option>
+      <option value="23">11 PM</option>
+      <option value="24">12 PM</option>
+
+      <option value="1">1 AM</option>
+      <option value="2">2 AM</option>
+      <option value="3">3 AM</option>
+      <option value="4">4 AM</option>
+      <option value="5">5 AM</option>
+      <option value="6">6 AM</option>
+      <option value="7">7 AM</option>
+      <option value="8">8 AM</option>
+      <option value="9">9 AM</option>
+      <option value="10">10 AM</option>
+      <option value="11">11 AM</option>
+      <option value="12">12 AM</option>
+
+</select>
+
+    </div>
+    <div class="col-md-auto">
+
+<select name="minute" class="form-control" id="FormControlSelect2">
+      <option value="0">0 Minute</option>
+      <option value="10">10 Minute</option>
+      <option value="20">20 Minute</option>
+      <option value="30">30 Minute</option>
+      <option value="40">40 Minute</option>
+      <option value="50">50 Minute</option>
+
+
+
+    </select>
+
+    </div>
+  </div>
+
+</div>
+
+
+<br>
+
+    {% for message in messages %}
+
+
+        <div class="alert alert-success" role="alert">
+            <p>{{ message }}</p>
+        </div>
+
+    {% endfor %}
+
+
+    <br>
+
+
+            <input id='submit' type="submit" name="submit" value="Subscribe" class="btn btn-search">
+        </form>
+
+        </div>
+
+
+        <a href="{% url 'mail-disable' %}" target="_blank"><button type="button" class="btn btn-warning">Remove Subscription</button></a>
+
+
+        <script type="text/javascript">
+            $(document).ready(function() {
+                $('input[type="checkbox"]').click(function() {
+                    const inputValue = $(this).attr("value");
+                    $("." + inputValue).toggle();
+
+                });
+            });
+        </script>
+    </center>
+  </div>
+</section>
+
+
+
+
+
+{% endblock %}
+
+
+
+
+
+
+
+
+
+
+
+

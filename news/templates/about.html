@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Air360 - The Ultimate News Feed</title>
+
+    {% load static %}
+    <link href="{% static 'news/css/about.css' %}" rel="stylesheet">
+    <link rel="icon" type="image/png" href="{% static 'images/ico.png' %}"/>
+
+</head>
+
+<div class="about-section">
+  <div class="inner-container">
+    <h1>About Us</h1>
+    <p class="text">
+      There are lots of information and articles on the internet. Finding good relevant content is always hard & Time consuming.
+</p>
+
+       <p class="text">
+So our Program will automatically search the popular websites, looks for the relevant content and creates a list for us to browse the content & It is also able to send the list through email at a scheduled time.
+</p>
+
+    <div class="skills">
+        <p><a href="{% url 'home' %}">Home</a></p>
+        <p><a href="{% url 'custom-search' %}">Custom News</a></p>
+        <p><a href="{% url 'mail' %}">Mail Sender</a></p>
+    </div>
+  </div>
+</div>
+
+
+</html>
