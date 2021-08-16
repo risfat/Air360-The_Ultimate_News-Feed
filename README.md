@@ -21,5 +21,5 @@ The user also able to select which content they want to look at or not.
 - Options to choose Favorite Publishers
 - Option to choose Favorite Categories
 - Advanced Custom News & Search Feature
-- Mailing Service Feature
+- Smart Mailing Service Feature
 - Smart Looking & Attractive Design
