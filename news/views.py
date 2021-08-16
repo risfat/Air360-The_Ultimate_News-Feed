@@ -179,31 +179,37 @@ class Custom:
 
         print(f"Starting Scraping {tag} News: ")
 
-        for i in range(8):
-            entry = feed.entries[i]
+        try:
 
-            # https://stackoverflow.com/questions/9662346/python-code-to-remove-html-tags-from-a-string
-            description = BeautifulSoup(entry.description, "html.parser")
+            for i in range(8):
+                entry = feed.entries[i]
 
-            try:
-                img = description.find("img").get("src")
+                # https://stackoverflow.com/questions/9662346/python-code-to-remove-html-tags-from-a-string
+                description = BeautifulSoup(entry.description, "html.parser")
 
-            except:
+                try:
+                    img = description.find("img").get("src")
 
-                # print("Image Not Found")
-                img = None
+                except:
 
-            news = {
-                "title": entry.title,
-                "description": description.text[0:120] + "...",
-                "img": img,
-                "author": entry.author,
-                "link": entry.link
-            }
+                    # print("Image Not Found")
+                    img = None
 
-            news_list.append(news)
+                news = {
+                    "title": entry.title,
+                    "description": description.text[0:120] + "...",
+                    "img": img,
+                    "author": entry.author,
+                    "link": entry.link
+                }
 
-        print("The scraping job succeeded: 200")
+                news_list.append(news)
+
+            print("The scraping job succeeded: 200")
+
+        except:
+
+            print("Something went Wrong")
 
         return news_list
 
@@ -216,31 +222,37 @@ class Custom:
 
         print(f"Starting Scraping {tag} News: ")
 
-        for i in range(8):
-            entry = feed.entries[i]
+        try:
 
-            # https://stackoverflow.com/questions/9662346/python-code-to-remove-html-tags-from-a-string
-            description = BeautifulSoup(entry.description, "html.parser")
+            for i in range(8):
+                entry = feed.entries[i]
 
-            try:
-                img = description.find("img").get("src")
+                # https://stackoverflow.com/questions/9662346/python-code-to-remove-html-tags-from-a-string
+                description = BeautifulSoup(entry.description, "html.parser")
 
-            except:
+                try:
+                    img = description.find("img").get("src")
 
-                # print("Image Not Found")
-                img = None
+                except:
 
-            news = {
-                "title": entry.title,
-                "description": description.text[0:120] + "...",
-                "img": img,
-                "author": entry.author,
-                "link": entry.link
-            }
+                    # print("Image Not Found")
+                    img = None
 
-            news_list.append(news)
+                news = {
+                    "title": entry.title,
+                    "description": description.text[0:120] + "...",
+                    "img": img,
+                    "author": entry.author,
+                    "link": entry.link
+                }
 
-        print("The scraping job succeeded: 200")
+                news_list.append(news)
+
+            print("The scraping job succeeded: 200")
+
+        except:
+
+            print("Something went Wrong")
 
         return news_list
 
