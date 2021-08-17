@@ -177,7 +177,7 @@ def send_mail_func(self, mail, publisher, keys):
     mail_subject = "Here is Your Daily Abridgment - Air360"
     to_email = mail
 
-    # https: // docs.djangoproject.com / en / 3.2 / topics / email /  # django.core.mail
+    # https://docs.djangoproject.com/en/3.2/topics/email/#django.core.mail
 
     send_mail(
         subject=mail_subject,
