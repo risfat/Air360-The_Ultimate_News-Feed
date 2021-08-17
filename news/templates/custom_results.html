@@ -5,7 +5,7 @@
 {% load static %}
 
 
-
+{% if dev|length > 0 %}
 
 <section class="section-01">
         <div class="container">
@@ -112,7 +112,9 @@
   </div>
       </section>
 
+{% endif %}
 
+{% if medium|length > 0 %}
 
 <section class="section-01">
         <div class="container">
@@ -189,7 +191,24 @@
   </div>
       </section>
 
+{% endif %}
 
+
+{% if medium|length == 0  and dev|length == 0 %}
+
+
+    <section class="section-01">
+        <div class="container">
+
+    <div class="alert alert-danger" role="alert">
+        Sorry !! Nothing Was Found Matching to Your Search...
+    </div>
+
+        </div>
+
+    </section>
+
+{% endif %}
 
 
 {% endblock %}
