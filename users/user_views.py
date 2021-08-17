@@ -1,8 +1,11 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth.forms import UserCreationForm
+
+from Air360 import settings
 from .forms import CreateUserForm
 from django.contrib import messages
 from django.contrib.auth import authenticate, login, logout
+from django.core.mail import send_mail
 
 
 def login_page(req):
@@ -37,7 +40,16 @@ def register_page(req):
             if form.is_valid():
                 form.save()
                 user = form.cleaned_data.get('username')
+                email = form.cleaned_data.get('email')
+
                 messages.success(req, 'Account was created successfully for ' + user)
+
+                subject = 'Warm Welcome To Air360'
+                message = f'Hi {user}, Thank you for registering in Air360. Enjoy Your Stay. '
+                email_from = settings.EMAIL_HOST_USER
+                recipient_list = [email, ]
+                send_mail(subject, message, email_from, recipient_list)
+
                 return redirect('login')
 
         context = {'form': form}
