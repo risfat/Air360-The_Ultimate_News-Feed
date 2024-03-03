@@ -8,7 +8,7 @@
 
 There are lots of information and articles on the internet. Finding good relevant content is always hard & Time consuming. 
 
-So our Program will automatically search the popular websites, looks for the relevant content and creates a list for us to browse the content & It is also able to send the list through email at a scheduled time.
+So This Program will automatically search the popular websites, looks for the relevant content and creates a list for us to browse the content & It is also able to send the list through email at a scheduled time.
 The user also able to select which content they want to look at or not.
 
 
